@@ -1,32 +1,27 @@
-/**
- * Enrutador 
- * Endpoints
- */
 
-//1- Importamos al modulo express
+ // Enrutador  Endpoints
+
 const express = require("express");
 
-//2- Instanciamos Router de express
 const router = express.Router();
 
-//3- Importamos el controlador de funciones
-const movieController = require("../controllers/movieController");
+// Importamos el controlador de funciones
+const clienteController = require("../controllers/clienteController");
 
-//4- Planteamos las solicitudes GET, POST, PUT, DELETE
+// Planteamos las solicitudes GET, POST, PUT, DELETE
 // ruta del listado general
-router.get("/list", movieController.getAllMovies);
+router.get("/list", clienteController.getAllClientes);
 // ruta para consultas parametricas
-router.get("/:id", movieController.getMovieById);
-// ruta para crear peliculas
-router.post("/create", movieController.createMovie);
-// ruta para actualizar
-router.put("/:id", movieController.updateMovie);
-// ruta para borrar pelicula
-router.delete("/:id", movieController.deleteMovie);
+router.get("/:dni", clienteController.getClienteById);
+// ruta para crear clientes
+router.post("/reg", clienteController.regcliente);
+// ruta para actualizar cliente
+router.put("/:dni", clienteController.updatecliente);
+// ruta para borrar cliente
+router.delete("/:dni", clienteController.deletecliente);
 
-//5- Exportamos el modulo
 module.exports = router;
 
-//6- Pasamos a movieController
+
 
 
