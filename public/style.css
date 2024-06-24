@@ -1,0 +1,9 @@
+body{
+    background-color: lavenderblush;
+    max-width: 70%;
+    margin: 0 auto;
+}
+nav { 
+    display: flex;
+    justify-content: space-around;
+  } 
