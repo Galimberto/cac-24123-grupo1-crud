@@ -3,10 +3,10 @@
  * y es el que hará el tratamiento de la información.
  * En este archivo tenemos que codificar los métodos
  * .getAllCliente
- * .getMovieById
- * .createMovie
- * .updateMovie
- * .deleteMovie
+ * .getClienteBydni
+ * .createCliente
+ * .updateCliente
+ * .deleteCliente
  */
 
 //1- Importamos el módulo db
@@ -14,12 +14,12 @@
 // Es la conexión a la base de datos.
 const db = require("../db/db.js");
 
-//2- getAllMovies
-const getAllMovies = (req,res)=>{
-    // creamos la consulta para traer todas las pelis
-    const sql = "SELECT * FROM movies";
-
+//2- getAllClientes
+const getAllClientes = (req,res)=>{
+    // creamos la consulta para traer todas los clientes           
+    const sql ='SELECT clientes.Idcliente,clientes.dni,clientes.nombre,clientes.email,clientes.direccion,clientes.telefono,clientes.observaciones,provincia.provincia, rutas.nombreruta,rutas.tiporuta FROM clientes LEFT JOIN provincia ON clientes.Idcliente = provincia.Idcliente LEFT JOIN rutas ON clientes.Idcliente = rutas.Idcliente';
     //Enviamos la consulta a la bbdd
+    
     db.query(sql, (error, result)=>{
         //si sucede error
         if(error){throw error};
@@ -27,19 +27,17 @@ const getAllMovies = (req,res)=>{
         res.json(result);
     });
 };
-
-//3- getMovieById
-const getMovieById = (req,res)=>{
-    // obtenemos el id solicitado
-    // Tomamos la solicitud y extraemos su id
-    // Esta es una notacion de desestructuración {id}
-    const {id} = req.params; // const id = req.params.id
+//3- getMovieBydni
+const getClienteBydni = (req,res)=>{
+    // obtenemos el dni solicitado
+    // Tomamos la solicitud y extraemos su dni
+    // Esta es una notacion de desestructuración {dni}
+    const {dni} = req.params; // const dni = req.params.dni // 
 
     // consulta a la bbdd ? es un marcador de posicion
-    const sql = 'SELECT * FROM movies WHERE id = ?'
-
+    const sql = 'SELECT clientes.Idcliente,clientes.dni,clientes.nombre,clientes.email,clientes.direccion,clientes.telefono,clientes.observaciones,provincia.provincia, rutas.nombreruta,rutas.tiporuta FROM clientes LEFT JOIN provincia ON clientes.Idcliente = provincia.Idcliente LEFT JOIN rutas ON clientes.Idcliente = rutas.Idcliente WHERE dni = ?'
     // Enviamos la consulta
-    db.query(sql, [id],(error,result)=>{
+    db.query(sql, [dni],(error,result)=>{
         //si sucede error
         if(error){throw error};
         //si todo sale bien
@@ -103,9 +101,9 @@ const deleteMovie = (req,res)=>{
 
 // Exportamos el modulo
 module.exports = {
-    getAllMovies,
-    getMovieById,
-    createMovie,
+    getAllClientes,
+    getClienteBydni,
+    /* createMovie,
     updateMovie,
-    deleteMovie
+    deleteMovie */
 };

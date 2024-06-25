@@ -12,13 +12,13 @@ const clienteController = require("../controllers/clienteController");
 // ruta del listado general
 router.get("/list", clienteController.getAllClientes);
 // ruta para consultas parametricas
-router.get("/:dni", clienteController.getClienteById);
+router.get("/:dni", clienteController.getClienteBydni);
 // ruta para crear clientes
-router.post("/reg", clienteController.regcliente);
+    /* router.post("/reg", clienteController.regcliente); */
 // ruta para actualizar cliente
-router.put("/:dni", clienteController.updatecliente);
+    /* router.put("/:dni", clienteController.updatecliente); */
 // ruta para borrar cliente
-router.delete("/:dni", clienteController.deletecliente);
+    /* router.delete("/:dni", clienteController.deletecliente); */
 
 module.exports = router;
 
