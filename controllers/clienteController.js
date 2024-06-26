@@ -27,7 +27,7 @@ const getAllClientes = (req,res)=>{
         res.json(result);
     });
 };
-//3- getMovieBydni
+//3- getClienteBydni
 const getClienteBydni = (req,res)=>{
     // obtenemos el dni solicitado
     // Tomamos la solicitud y extraemos su dni
@@ -45,56 +45,56 @@ const getClienteBydni = (req,res)=>{
     });
 };
 
-// createMovie
-
+// createCliente
 const createCliente = (req,res)=>{
     // Desestructuramos la request
-    const {dni,nombre,email,direccion,telefono,observaciones,provincia,nombreruta,tiporuta} =req.body;
-
+    const {dni,nombre,email,direccion,telefono,observaciones} = req.body;
+    
     // creamos la consulta
-    const sql = '';
-
+    const sql = 'INSERT INTO clientes (dni, nombre, email, direccion, telefono, observaciones) VALUES (?, ?, ?, ?, ?, ?) ';
+       
     // pasamos la consulta
-    db.query(sql,[dni,nombre,email,direccion,telefono,observaciones,provincia,nombreruta,tiporuta], (error,result)=>{
+    db.query(sql,[dni,nombre,email,direccion,telefono,observaciones], (error,result)=>{
         //si sucede error
         if(error){throw error};
         //si todo sale bien
-        res.json({mensaje: "Cliente creado"});
+        res.json({mensaje: "Cliente creado"});       
     })
-}
+};
 
-// updateMovie
 
-const updateMovie = (req,res)=>{
+// updateCliente
+
+const updateCliente = (req,res)=>{
     // Destructuramos la peticion
-    const {id} = req.params;
-    const{title,director,year} = req.body;
-
+    const {dni} = req.params;
+    const {nombre,email,direccion,telefono,observaciones} = req.body;
+    
     // Consulta con marcadores
-    const sql = 'UPDATE movies SET title = ?, director = ?, year = ? WHERE id = ?';
+    const sql = 'UPDATE clientes SET nombre = ?, email = ?, direccion = ?, telefono =?, observaciones = ?  WHERE dni = ?';
 
     // Pasamos la consulta
-    db.query(sql, [title, director, year, id], (error, result)=>{
+    db.query(sql, [nombre,email,direccion,telefono,observaciones, dni], (error, result)=>{
         //si sucede un error
         if(error){throw error};
         //si todo sale bien
-        res.json({mensaje: "Pelicula actualizada"});
+        res.json({mensaje: "Cliente actualizado"});
    })
 }
 
-// deleteMovie
-const deleteMovie = (req,res)=>{
+// deleteCliente
+const deleteCliente = (req,res)=>{
     // desestructuracion
-    const {id} = req.params;
+    const {dni} = req.params;
     // consulta sql
-    const sql = 'DELETE FROM movies WHERE id = ?';
+    const sql = 'DELETE FROM clientes WHERE dni = ?';
 
     // Pasamos la consulata a db
-    db.query(sql,[id], (error, result)=>{
+    db.query(sql,[dni], (error, result)=>{
         //si sucede un error
         if(error){throw error};
         //si todo sale bien
-        res.json({mensaje: "Pelicula borrada"});
+        res.json({mensaje: "Cliente borrado"});
     })
 }
 
@@ -103,7 +103,7 @@ const deleteMovie = (req,res)=>{
 module.exports = {
     getAllClientes,
     getClienteBydni,
-    /* createMovie,
-    updateMovie,
-    deleteMovie */
+    createCliente,
+    updateCliente,
+   deleteCliente
 };

@@ -14,11 +14,11 @@ router.get("/list", clienteController.getAllClientes);
 // ruta para consultas parametricas
 router.get("/:dni", clienteController.getClienteBydni);
 // ruta para crear clientes
-    /* router.post("/reg", clienteController.regcliente); */
+    router.post("/reg", clienteController.createCliente);
 // ruta para actualizar cliente
-    /* router.put("/:dni", clienteController.updatecliente); */
+    router.put("/:dni", clienteController.updateCliente);
 // ruta para borrar cliente
-    /* router.delete("/:dni", clienteController.deletecliente); */
+    router.delete("/:dni", clienteController.deleteCliente);
 
 module.exports = router;
 
