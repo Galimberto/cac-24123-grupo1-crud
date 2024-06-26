@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agregar Película</title>
+  <title>Agregar Cliente</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,54 +17,12 @@
   <hr>
 
 
-  <h1>Agregar Nueva Película</h1>
-  <form id="add-movie-form">
-    <div>
-      <label for="title">Título:</label>
-      <input type="text" id="title" name="title" required>
-    </div>
-    <div>
-      <label for="director">Director:</label>
-      <input type="text" id="director" name="director" required>
-    </div>
-    <div>
-      <label for="year">Año:</label>
-      <input type="number" id="year" name="year" required>
-    </div>
-    <button type="submit">Agregar Película</button>
-  </form>
+  <h1>Agregar Nueva Cliente</h1>
+  
+  
 
   <script>
-    document.getElementById('add-movie-form').addEventListener('submit', async function(event) {
-      event.preventDefault();
-
-      const title = document.getElementById('title').value;
-      const director = document.getElementById('director').value;
-      const year = document.getElementById('year').value;
-
-      const movie = { title, director, year };
-
-      try {
-        const response = await fetch('/movies/create', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(movie)
-        });
-
-        if (response.ok) {
-          alert('Película agregada con éxito');
-          // Limpiar el formulario después de agregar la película
-          document.getElementById('add-movie-form').reset();
-        } else {
-          alert('Error al agregar la película');
-        }
-      } catch (error) {
-        console.error('Error al agregar la película:', error);
-        alert('Error al agregar la película');
-      }
-    });
+    
   </script>
 </body>
 </html>

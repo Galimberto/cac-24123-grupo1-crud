@@ -12,7 +12,7 @@ const app = express();
 const clienteRoutes = require("../routes/clienteRoutes");
 
 //4- Declaramos el puerto
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 //5- Transformacion del body a formato legible
 app.use(express.json());
@@ -24,5 +24,5 @@ app.use("/clientes", clienteRoutes);
 app.use(express.static('public'));
 
 //7- Inicializamos el servidor
-app.listen(PORT, ()=>console.log('servidor escuchando'))
+app.listen(PORT, ()=>console.log(`http://localhost:${PORT}`));
 

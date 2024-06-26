@@ -47,19 +47,19 @@ const getClienteBydni = (req,res)=>{
 
 // createMovie
 
-const createMovie = (req,res)=>{
+const createCliente = (req,res)=>{
     // Desestructuramos la request
-    const {title, director,year} =req.body;
+    const {dni,nombre,email,direccion,telefono,observaciones,provincia,nombreruta,tiporuta} =req.body;
 
     // creamos la consulta
-    const sql = 'INSERT INTO movies (title, director, year) VALUES (?, ?, ?)';
+    const sql = '';
 
     // pasamos la consulta
-    db.query(sql,[title,director,year], (error,result)=>{
+    db.query(sql,[dni,nombre,email,direccion,telefono,observaciones,provincia,nombreruta,tiporuta], (error,result)=>{
         //si sucede error
         if(error){throw error};
         //si todo sale bien
-        res.json({mensaje: "Pelicula creada"});
+        res.json({mensaje: "Cliente creado"});
     })
 }
 
