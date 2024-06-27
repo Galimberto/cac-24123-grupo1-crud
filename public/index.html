@@ -16,7 +16,31 @@
   <hr>
 
   <h1>Listado de Clientes</h1>
-  
+  <ol id="client-list"></ol>
+
+  <script>
+    // Función para obtener todas las películas
+    async function getAllClientes() {
+      try {
+        const response = await fetch('/clientes/list');
+        const clientes = await response.json();
+        const clientesList = document.getElementById('client-list');
+        clientesList.innerHTML = '';
+
+        clientes.forEach(cliente => {
+          const li = document.createElement('li');
+          li.textContent = `${cliente.nombre}  | dni: ${cliente.dni} | email: ${cliente.email} | direc.:${cliente.direccion} | prov.:${cliente.provincia} | 📞: ${cliente.telefono} | ciclo-tour: ${cliente.nombreruta} | nivel:${cliente.tiporuta}`;
+          clientesList.appendChild(li);
+        });
+      } catch (error) {
+        console.error('Error al obtener las películas:', error);
+      }
+    }
+
+    // Llamar a la función para obtener todas las películas al cargar la página
+    document.addEventListener('DOMContentLoaded', getAllClientes);
   </script>
+  
+  
 </body>
 </html>

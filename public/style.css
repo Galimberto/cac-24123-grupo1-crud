@@ -7,3 +7,10 @@ nav {
     display: flex;
     justify-content: space-around;
   } 
+
+#client-list{
+    font-size: 1.15rem;
+}
+#client-list ol {
+    list-style-type: decimal;
+}
