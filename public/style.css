@@ -1,5 +1,5 @@
 body{
-    background-color: lavenderblush;
+    background-color: #635432;
     max-width: 70%;
     margin: 0 auto;
 }
@@ -8,9 +8,24 @@ nav {
     justify-content: space-around;
   } 
 
-#client-list{
-    font-size: 1.15rem;
+h1{
+    color: whitesmoke;
 }
-#client-list ol {
-    list-style-type: decimal;
+
+table{
+    background-color: whitesmoke;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,td{
+    padding: 10px;
+}
+thead{
+    background-color: #246355;
+    border-bottom: solid 4px #0f363d;
+    color: whitesmoke;
+}
+tr:nth-child(even){
+    background-color: #ddd;
 }

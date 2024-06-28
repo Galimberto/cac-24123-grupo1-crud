@@ -16,30 +16,80 @@
   <hr>
 
   <h1>Listado de Clientes</h1>
-  <ol id="client-list"></ol>
 
-  <script>
-    // Función para obtener todas las películas
+  <table id="client-table" border="1">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>DNI</th>
+            <th>Email</th>
+            <th>Dirección</th>
+            <th>Provincia</th>
+            <th>Teléfono</th>
+            <th>Ciclo-Tour</th>
+            <th>Nivel</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Las filas se insertarán aquí dinámicamente -->
+    </tbody>
+</table>
+
+<script>
+    // Función para obtener todos los clientes
     async function getAllClientes() {
-      try {
-        const response = await fetch('/clientes/list');
-        const clientes = await response.json();
-        const clientesList = document.getElementById('client-list');
-        clientesList.innerHTML = '';
+        try {
+            const response = await fetch('/clientes/list');
+            const clientes = await response.json();
+            const clientTableBody = document.getElementById('client-table').querySelector('tbody');
+            clientTableBody.innerHTML = '';
 
-        clientes.forEach(cliente => {
-          const li = document.createElement('li');
-          li.textContent = `${cliente.nombre}  | dni: ${cliente.dni} | email: ${cliente.email} | direc.:${cliente.direccion} | prov.:${cliente.provincia} | 📞: ${cliente.telefono} | ciclo-tour: ${cliente.nombreruta} | nivel:${cliente.tiporuta}`;
-          clientesList.appendChild(li);
-        });
-      } catch (error) {
-        console.error('Error al obtener las películas:', error);
-      }
+            clientes.forEach(cliente => {
+                const row = document.createElement('tr');
+                
+                const nombreCell = document.createElement('td');
+                nombreCell.textContent = cliente.nombre;
+                row.appendChild(nombreCell);
+
+                const dniCell = document.createElement('td');
+                dniCell.textContent = cliente.dni;
+                row.appendChild(dniCell);
+
+                const emailCell = document.createElement('td');
+                emailCell.textContent = cliente.email;
+                row.appendChild(emailCell);
+
+                const direccionCell = document.createElement('td');
+                direccionCell.textContent = cliente.direccion;
+                row.appendChild(direccionCell);
+
+                const provinciaCell = document.createElement('td');
+                provinciaCell.textContent = cliente.provincia;
+                row.appendChild(provinciaCell);
+
+                const telefonoCell = document.createElement('td');
+                telefonoCell.textContent = cliente.telefono;
+                row.appendChild(telefonoCell);
+
+                const nombrerutaCell = document.createElement('td');
+                nombrerutaCell.textContent = cliente.nombreruta;
+                row.appendChild(nombrerutaCell);
+
+                const tiporutaCell = document.createElement('td');
+                tiporutaCell.textContent = cliente.tiporuta;
+                row.appendChild(tiporutaCell);
+
+                clientTableBody.appendChild(row);
+            });
+        } catch (error) {
+            console.error('Error al obtener los clientes:', error);
+        }
     }
 
-    // Llamar a la función para obtener todas las películas al cargar la página
+    // Llamar a la función para obtener todos los clientes al cargar la página
     document.addEventListener('DOMContentLoaded', getAllClientes);
-  </script>
+</script>
+
   
   
 </body>
