@@ -14,7 +14,7 @@ router.get("/list", clienteController.getAllClientes);
 // ruta para consultas parametricas
 router.get("/:dni", clienteController.getClienteBydni);
 // ruta para crear clientes
-    router.post("/reg", clienteController.createCliente);
+    router.post("/", clienteController.createCliente);
 // ruta para actualizar cliente
     router.put("/:dni", clienteController.updateCliente);
 // ruta para borrar cliente
