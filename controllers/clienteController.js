@@ -1,13 +1,3 @@
-/**
- * El controlador es el que tendrá los cambios más importantes 
- * y es el que hará el tratamiento de la información.
- * En este archivo tenemos que codificar los métodos
- * .getAllCliente
- * .getClienteBydni
- * .createCliente
- * .updateCliente
- * .deleteCliente
- */
 
 //1- Importamos el módulo db
 // El objeto db posee los métodos para conectar con la base de datos. 
@@ -62,7 +52,6 @@ const createCliente = (req,res)=>{
     })
 };
 
-
 // updateCliente
 
 const updateCliente = (req,res)=>{
@@ -97,7 +86,6 @@ const deleteCliente = (req,res)=>{
         res.json({mensaje: "Cliente borrado"});
     })
 }
-
 
 // Exportamos el modulo
 module.exports = {
